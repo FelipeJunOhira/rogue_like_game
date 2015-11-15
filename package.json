@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/FelipeJunOhira/rogue_like_game/issues"
   },
-  "homepage": "https://github.com/FelipeJunOhira/rogue_like_game#readme"
+  "homepage": "https://github.com/FelipeJunOhira/rogue_like_game#readme",
+  "devDependencies": {
+    "bower": "^1.6.5"
+  }
 }
