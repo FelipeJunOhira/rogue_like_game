@@ -1,0 +1,12 @@
+{
+  "name": "rogue_like_game",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Jun <felipe.jun.ohira@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/FelipeJunOhira/rogue_like_game",
+  "moduleType": [],
+  "private": true
+}
