@@ -8,5 +8,8 @@
   "license": "ISC",
   "homepage": "https://github.com/FelipeJunOhira/rogue_like_game",
   "moduleType": [],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "requirejs": "2.1.20"
+  }
 }
