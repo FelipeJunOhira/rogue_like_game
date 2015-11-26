@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <title>Rogue like game</title>
 
-    <script data-main="config" src="../bower_components/requirejs/require.js" charset="utf-8"></script>
   </head>
   <body>
-    <script type="text/javascript">
-      require(['js/app'], function(App) {
-        var app = new App();
-        app.start();
-      });
-    </script>
+    <div id="MenuController">
+      <div id="item-list">
+      </div>
+    </div>
+
+    <script src="bundle.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,16 +1,11 @@
-define(function() {
+module.exports = (function() {
 
-  var App = (function() {
+  function App() {
+  };
 
-    function App() {
-    };
-
-    App.prototype.start = function() {
-      console.log('App started!');
-    };
-
-    return App;
-  })();
+  App.prototype.start = function() {
+    console.log('App started!');
+  };
 
   return App;
-});
+})();

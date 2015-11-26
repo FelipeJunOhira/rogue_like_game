@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bower": "bower"
+    "bower": "bower",
+    "build": "browserify app/js/init.js > app/bundle.js"
   },
   "repository": {
     "type": "git",
