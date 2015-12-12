@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bower": "bower",
-    "build": "browserify src/js/init.js > app/bundle.js && npm run build-templates",
-    "build-templates": "jade -o app/templates -P src/templates && jade -o app -P src/main.jade"
+    "build": "browserify src/js/init.js > app/bundle.js",
+    "prebuild": "npm run build-jade",
+    "build-jade": "jade -o app/templates -P src/templates && jade -o app -P src/main.jade"
   },
   "repository": {
     "type": "git",
