@@ -20,5 +20,9 @@
   "homepage": "https://github.com/FelipeJunOhira/rogue_like_game#readme",
   "devDependencies": {
     "bower": "1.6.5"
+  },
+  "dependencies": {
+    "jquery": "2.1.4",
+    "underscore": "1.8.3"
   }
 }
