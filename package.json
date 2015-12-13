@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bower": "bower",
     "build": "npm run build:jade && npm run build:sass && npm run build:js",
-    "build:js": "browserify src/js/init.js > app/bundle.js",
     "build:jade": "jade -o app/templates -P src/templates && jade -o app -P src/main.jade",
-    "build:sass": "node-sass -o app/styles src/styles"
+    "build:sass": "node-sass -o app/styles src/styles",
+    "build:js": "browserify src/js/init.js > app/bundle.js",
+    "watch": "watchify src/js/init.js -o app/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   "homepage": "https://github.com/FelipeJunOhira/rogue_like_game#readme",
   "devDependencies": {
     "browserify": "12.0.1",
-    "jade": "1.11.0"
+    "jade": "1.11.0",
+    "watchify": "3.6.1"
   },
   "dependencies": {
     "jquery": "2.1.4",
