@@ -4,4 +4,4 @@ npm-debug.log
 
 bower_components
 
-app
+app/bundle.js
