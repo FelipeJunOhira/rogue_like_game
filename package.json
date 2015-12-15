@@ -5,20 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bower": "bower",
-    "build": "npm run build:jade && npm run build:sass && npm run build:js",
-    "build:jade": "npm run build:jade:templates && npm run build:jade:main",
-    "build:jade:main": "jade -o app -P src/main.jade",
-    "build:jade:templates": "jade -o app/templates -P src/templates",
+    "build": "npm run build:sass && npm run build:js",
     "build:sass": "node-sass -o app/styles src/styles",
-    "build:js": "browserify src/js/init.js > app/bundle.js",
+    "build:js": "webpack",
     "prewatch": "npm run build",
-    "watch": "npm run watch:jade && npm run watch:sass && npm run watch:js",
-    "watch:jade": "npm run watch:jade:main && npm run watch:jade:templates",
-    "watch:jade:main": "jade -o app -P -w src/main.jade",
-    "watch:jade:templates": "jade -o app/templates -P -w src/templates",
+    "watch": "npm run watch:sass && npm run watch:js",
     "watch:sass": "node-sass -o app/styles -w src/styles",
-    "watch:js": "watchify src/js/init.js -o app/bundle.js"
+    "watch:js": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -31,9 +24,11 @@
   },
   "homepage": "https://github.com/FelipeJunOhira/rogue_like_game#readme",
   "devDependencies": {
-    "browserify": "12.0.1",
-    "jade": "1.11.0",
-    "watchify": "3.6.1",
+    "css-loader": "0.23.0",
+    "jade-loader": "0.8.0",
+    "node-sass": "3.4.2",
+    "sass-loader": "3.1.2",
+    "style-loader": "0.13.0",
     "webpack": "1.12.9"
   },
   "dependencies": {
