@@ -17,6 +17,11 @@ module.exports = function(config) {
     reporters: ['dots'],
     webpack: {
       devtool: 'inline-source-map',
+      resolve: {
+        alias: {
+          app: __dirname + '/app'
+        }
+      },
       module: webpackConfig.module
     },
     webpackServer: {
