@@ -1,10 +1,9 @@
 var expect = require('chai').expect;
 
-var App = require('app/js/app.js');
+var App = require('app/js/app');
 
 describe('App', function() {
   it('can be instantiated', function() {
-    var instance = new App();
-    expect(instance).to.be.instanceof(App);
+    expect(new App()).to.be.instanceof(App);
   });
 });
