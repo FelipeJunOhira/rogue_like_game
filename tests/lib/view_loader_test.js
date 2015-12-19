@@ -1,23 +1,28 @@
 var expect = require('chai').expect;
 
 var ViewLoader = require('app/lib/view_loader');
+var jQuery = require('jquery');
 
 describe('ViewLoader', function() {
-  var viewLoader;
-
   it('can be instantiated', function() {
     expect(new ViewLoader()).to.be.instanceof(ViewLoader);
   });
 
   describe('.load', function() {
-    beforeEach(function() {
-      viewLoader = new ViewLoader('tests/fixtures');
+    var jadeLoader = new ViewLoader('tests/fixtures/template');
+
+    it('returns a jQuery object', function() {
+      var $content = jadeLoader.load();
+
+      expect($content).to.be.instanceof(jQuery);
     });
 
-    it('returns a HTML compiler function', function() {
-      var compiler = viewLoader.load('template');
+    it('returns a view file with the content set', function() {
+      var context = { text: 'Test Success!' };
 
-      expect(compiler()).to.be.equal('<div>Test Success!</div>');
-    });
+      var $content = jadeLoader.load(context);
+
+      expect($content.text()).to.be.equal(context.text);
+    })
   });
 });

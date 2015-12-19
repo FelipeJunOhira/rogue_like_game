@@ -1,23 +1,15 @@
+var $ = require('jquery')
+var JadeLoader = require('./jade_loader');
+
 module.exports = (function() {
 
-  function ViewLoader(basePath) {
-    this.basePath = basePath;
+  function ViewLoader(filePath) {
+    this.loader = new JadeLoader(filePath);
   };
 
-  ViewLoader.prototype.load = function(relativePath) {
-    return require('../../' + this._getPath(relativePath) + '.jade');
-  };
-
-  ViewLoader.prototype._getPath = function(relativePath) {
-    return this.basePath + '/' + relativePath;
-  };
-
-  ViewLoader.prototype.loadTemplate = function(templateName) {
-    return require('../templates/' + templateName + ".jade");
-  };
-
-  ViewLoader.prototype.loadView = function(viewName) {
-    return require('../js/views/' + viewName + ".jade");
+  ViewLoader.prototype.load = function(context) {
+    var compiler = this.loader.load();
+    return $(compiler(context));
   };
 
   return ViewLoader;
