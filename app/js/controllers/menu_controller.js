@@ -1,4 +1,4 @@
-var Screen = require('../../lib/screen').getInstance();
+var Screen = require('../../lib/screen');
 var ViewLoader = require('../../lib/view_loader');
 
 module.exports = (function() {
@@ -7,7 +7,8 @@ module.exports = (function() {
   function MenuController() {
     var loader = viewLoader.load();
     this._content = loader();
-    Screen.addContent(this._content);
+    this.screen = Screen.getInstance();
+    this.screen.addContent(this._content);
   };
 
   return MenuController;
