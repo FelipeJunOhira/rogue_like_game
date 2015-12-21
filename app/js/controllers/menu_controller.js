@@ -1,16 +1,18 @@
-var ViewLoader = require('../../lib/view_loader');
-
 module.exports = (function() {
-  var viewLoader = new ViewLoader('app/js/views/menu');
 
   function MenuController() {
-    this._loadContent();
-    this._bindViewElements();
-    this._bindViewEvents();
   };
 
-  MenuController.prototype._loadContent = function() {
-    this._content = viewLoader.load();
+  MenuController.prototype.loadContent = function(ViewLoader) {
+    var viewLoader = new ViewLoader('app/js/views/menu');
+    return viewLoader.load();
+  };
+
+  MenuController.prototype.onViewLoaded = function(content) {
+    this._content = content;
+
+    this._bindViewElements();
+    this._bindViewEvents();
   };
 
   MenuController.prototype._bindViewElements = function() {
@@ -25,10 +27,6 @@ module.exports = (function() {
     this.highScoreButton.click(function() {
       console.log('High Score button clicked');
     });
-  };
-
-  MenuController.prototype.getContent = function() {
-    return this._content;
   };
 
   return MenuController;
