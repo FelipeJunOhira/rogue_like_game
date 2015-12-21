@@ -6,7 +6,7 @@ module.exports = (function() {
   };
 
   App.prototype.start = function() {
-    var controller = new MenuController();
+    var menuController = new MenuController();
   };
 
   return App;
