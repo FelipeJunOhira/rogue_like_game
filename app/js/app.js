@@ -19,6 +19,8 @@ module.exports = (function() {
   App.prototype.loadController = function(controller) {
     this.currentController = controller;
 
+    this.currentController.setApplication(this);
+
     this._displayCurrentController();
   };
 
@@ -35,9 +37,16 @@ module.exports = (function() {
   };
 
   App.prototype._getCurrentControllerViewPath = function() {
+    return 'app/js/views/' + this._getCurrentControllerNameFormatted();
+  };
+
+  App.prototype._getCurrentControllerNameFormatted = function() {
     var controllerName = this.currentController.constructor.name;
-    return 'app/js/views/' +
-            controllerName.replace(/Controller/, '').toLowerCase();
+    return controllerName
+            .replace(/Controller/, '')
+            .replace(/([A-Z])/g, '_$1')
+            .substr(1)
+            .toLowerCase();
   };
 
   return App;
