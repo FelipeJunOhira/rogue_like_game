@@ -3,12 +3,7 @@ module.exports = (function() {
   function MenuController() {
   };
 
-  MenuController.prototype.loadContent = function(ViewLoader) {
-    var viewLoader = new ViewLoader('app/js/views/menu');
-    return viewLoader.load();
-  };
-
-  MenuController.prototype.onViewLoaded = function(content) {
+  MenuController.prototype.onContentLoaded = function(content) {
     this._content = content;
 
     this._bindViewElements();

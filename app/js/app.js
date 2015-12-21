@@ -25,11 +25,19 @@ module.exports = (function() {
   App.prototype._displayCurrentController = function() {
     var content = this._loadCurrentControllerContent();
     this.screen.addContent(content);
-    this.currentController.onViewLoaded(content);
+    this.currentController.onContentLoaded(content);
   };
 
   App.prototype._loadCurrentControllerContent = function() {
-    return this.currentController.loadContent(ViewLoader);
+    var viewPath = this._getCurrentControllerViewPath();
+    var viewLoader = new ViewLoader(viewPath);
+    return viewLoader.load();
+  };
+
+  App.prototype._getCurrentControllerViewPath = function() {
+    var controllerName = this.currentController.constructor.name;
+    return 'app/js/views/' +
+            controllerName.replace(/Controller/, '').toLowerCase();
   };
 
   return App;
