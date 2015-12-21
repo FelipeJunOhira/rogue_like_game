@@ -5,16 +5,14 @@ module.exports = (function() {
   function MenuController() {
   };
 
-  MenuController.prototype.onContentLoaded = function(content) {
-    this._content = content;
-
+  MenuController.prototype.beforeViewLoad = function() {
     this._bindViewElements();
     this._bindViewEvents();
   };
 
   MenuController.prototype._bindViewElements = function() {
-    this.startGameButton = this._content.find('#start-game-button');
-    this.highScoreButton = this._content.find('#high-score-button');
+    this.startGameButton = this.content.find('#start-game-button');
+    this.highScoreButton = this.content.find('#high-score-button');
   };
 
   MenuController.prototype._bindViewEvents = function() {

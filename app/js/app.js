@@ -7,7 +7,7 @@ module.exports = (function() {
 
   function App() {
     this.screen = Screen.getInstance();
-    this.currentController = null;
+    this.controllerStack = [];
   };
 
   App.prototype.start = function() {
@@ -17,17 +17,41 @@ module.exports = (function() {
   };
 
   App.prototype.loadController = function(controller) {
-    this.currentController = controller;
+    this.addControllerToStack(controller);
 
-    this.currentController.setApplication(this);
+    this.getCurrentController().setApplication(this);
 
     this._displayCurrentController();
   };
 
+  App.prototype.addControllerToStack = function(controller) {
+    this.controllerStack.push(controller);
+  };
+
+  App.prototype.getCurrentController = function() {
+    return this.controllerStack[this.controllerStack.length - 1];
+  };
+
+  App.prototype.dismissController = function(controller) {
+    var controllerIndex = this.controllerStack.indexOf(controller);
+    this.controllerStack.splice(controllerIndex, 1);
+
+    var shouldReloadCurrentController =
+      controllerIndex == this.controllerStack.length;
+    if (shouldReloadCurrentController) {
+      this._displayCurrentController();
+    }
+  };
+
   App.prototype._displayCurrentController = function() {
-    var content = this._loadCurrentControllerContent();
+    var currentController = this.getCurrentController();
+    currentController.content = this._loadCurrentControllerContent();
+    currentController.beforeViewLoad();
+    this._loadContent(currentController.content);
+  };
+
+  App.prototype._loadContent = function(content) {
     this.screen.addContent(content);
-    this.currentController.onContentLoaded(content);
   };
 
   App.prototype._loadCurrentControllerContent = function() {
@@ -41,7 +65,7 @@ module.exports = (function() {
   };
 
   App.prototype._getCurrentControllerNameFormatted = function() {
-    var controllerName = this.currentController.constructor.name;
+    var controllerName = this.getCurrentController().constructor.name;
     return controllerName
             .replace(/Controller/, '')
             .replace(/([A-Z])/g, '_$1')
