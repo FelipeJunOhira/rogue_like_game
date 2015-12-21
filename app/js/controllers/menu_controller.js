@@ -1,15 +1,12 @@
-var Screen = require('../../lib/screen');
 var ViewLoader = require('../../lib/view_loader');
 
 module.exports = (function() {
-  var screen = Screen.getInstance();
   var viewLoader = new ViewLoader('app/js/views/menu');
 
   function MenuController() {
     this._loadContent();
     this._bindViewElements();
     this._bindViewEvents();
-    this._displayContent();
   };
 
   MenuController.prototype._loadContent = function() {
@@ -30,8 +27,8 @@ module.exports = (function() {
     });
   };
 
-  MenuController.prototype._displayContent = function() {
-    screen.addContent(this._content);
+  MenuController.prototype.getContent = function() {
+    return this._content;
   };
 
   return MenuController;
