@@ -1,14 +1,15 @@
+var $ = require('jquery')
+var JadeLoader = require('./jade_loader');
+
 module.exports = (function() {
 
-  function ViewLoader() {
+  function ViewLoader(filePath) {
+    this.loader = new JadeLoader(filePath);
   };
 
-  ViewLoader.prototype.loadTemplate = function(templateName) {
-    return require('../templates/' + templateName + ".jade");
-  };
-
-  ViewLoader.prototype.loadView = function(viewName) {
-    return require('../js/views/' + viewName + ".jade");
+  ViewLoader.prototype.load = function(context) {
+    var compiler = this.loader.load();
+    return $(compiler(context));
   };
 
   return ViewLoader;
