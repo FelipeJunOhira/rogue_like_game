@@ -7,7 +7,7 @@ module.exports = (function() {
   HighScoreController.prototype = Object.create(BaseController.prototype);
   HighScoreController.prototype.constructor = HighScoreController;
 
-  HighScoreController.prototype.viewPath = 'src/js/views/high_score';
+  HighScoreController.prototype.viewPath = '/templates/high_score';
 
   HighScoreController.prototype.beforeLoadView = function() {
     this._bindViewElements();

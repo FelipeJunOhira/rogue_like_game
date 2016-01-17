@@ -29,7 +29,7 @@ module.exports = (function() {
 
   BaseController.prototype._setupContentIfNeeded = function() {
     if (this._content) return;
-    var viewLoader = new ViewLoader(this.viewPath);
+    var viewLoader = new ViewLoader('src/js/views' + this.viewPath);
     this.setContent(viewLoader.load());
   };
 

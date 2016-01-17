@@ -8,7 +8,7 @@ module.exports = (function() {
   MenuController.prototype = Object.create(BaseController.prototype);
   MenuController.prototype.constructor = MenuController;
 
-  MenuController.prototype.viewPath = 'src/js/views/menu';
+  MenuController.prototype.viewPath = '/templates/menu';
 
   MenuController.prototype.beforeLoadView = function() {
     this._bindViewElements();
