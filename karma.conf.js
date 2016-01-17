@@ -19,7 +19,7 @@ module.exports = function(config) {
       devtool: 'inline-source-map',
       resolve: {
         alias: {
-          app: __dirname + '/app'
+          'src': __dirname + '/src'
         }
       },
       module: webpackConfig.module
