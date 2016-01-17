@@ -61,7 +61,7 @@ module.exports = (function() {
   };
 
   App.prototype._getCurrentControllerViewPath = function() {
-    return 'app/js/views/' + this._getCurrentControllerNameFormatted();
+    return 'src/js/views/' + this._getCurrentControllerNameFormatted();
   };
 
   App.prototype._getCurrentControllerNameFormatted = function() {
