@@ -8,6 +8,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jade$/,
+        exclude: /\.\/src\/main\.jade$/,
         loader: "jade"
       },
       {
