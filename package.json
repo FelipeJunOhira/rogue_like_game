@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "build": "npm run build:js && npm run build:html",
+    "build": "npm run build:js && npm run build:html && npm run build:css",
     "build:js": "webpack",
-    "build:html": "jade < src/main.jade > build/main.html -P",
+    "build:html": "jade src/main.jade -o build -P",
+    "build:css": "node-sass src/styles/main.sass build/styles/main.css",
     "prewatch": "npm run build",
-    "watch": "npm run watch:js & npm run watch:html",
+    "watch": "npm run watch:js & npm run watch:html & npm run watch:css",
     "watch:js": "webpack --watch",
     "watch:html": "jade src/main.jade -o build -P -w",
+    "watch:css": "node-sass -w src/styles/main.sass build/styles/main.css",
     "clean": "rm -rf build"
   },
   "repository": {
