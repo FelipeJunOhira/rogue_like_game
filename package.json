@@ -7,7 +7,7 @@
     "test": "karma start",
     "build": "npm run build:js && npm run build:html",
     "build:js": "webpack",
-    "build:html": "rsync -a src/main.html build",
+    "build:html": "rsync -a src/main.html build/main.html",
     "prewatch": "npm run build",
     "watch": "npm run watch:js & npm run watch:html",
     "watch:js": "webpack --watch",
