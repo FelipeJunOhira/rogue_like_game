@@ -1,33 +1,40 @@
 var HighScoreController = require('./high_score_controller');
+var BaseController = require('./base_controller');
 
 module.exports = (function() {
 
-  function MenuController() {
-  };
+  function MenuController() {};
 
-  MenuController.prototype.beforeViewLoad = function() {
+  MenuController.prototype = Object.create(BaseController.prototype);
+  MenuController.prototype.constructor = MenuController;
+
+  MenuController.prototype.viewPath = 'src/js/views/menu';
+
+  MenuController.prototype.beforeLoadView = function() {
     this._bindViewElements();
     this._bindViewEvents();
   };
 
   MenuController.prototype._bindViewElements = function() {
-    this.startGameButton = this.content.find('#start-game-button');
-    this.highScoreButton = this.content.find('#high-score-button');
+    var content = this.getContent();
+    this.startGameButton = content.find('#start-game-button');
+    this.highScoreButton = content.find('#high-score-button');
   };
 
   MenuController.prototype._bindViewEvents = function() {
-    var self = this;
-    this.startGameButton.click(function() {
-      console.log('Start game button clicked');
-    });
-    this.highScoreButton.click(function() {
-      var highScoreController = new HighScoreController();
-      self._application.loadController(highScoreController);
-    });
+    this.startGameButton.click(this.onStartGameButtonClick.bind(this));
+    this.highScoreButton.click(this.onHighScoreButtonClick.bind(this));
   };
 
-  MenuController.prototype.setApplication = function(application) {
-    this._application = application;
+  MenuController.prototype.onStartGameButtonClick = function() {
+    console.log('Start game button clicked');
+  };
+
+  MenuController.prototype.onHighScoreButtonClick = function() {
+    var application = this.getApplication();
+    var highScoreController = new HighScoreController();
+
+    application.loadController(highScoreController);
   };
 
   return MenuController;

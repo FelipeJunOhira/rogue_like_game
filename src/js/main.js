@@ -1,5 +1,8 @@
-var App = require('./app');
+var Application = require('../lib/application');
+var MenuController = require('./controllers/menu_controller.js');
 
-var app = new App();
+var menuController = new MenuController();
 
-app.start();
+var app = new Application();
+
+app.loadController(menuController);
