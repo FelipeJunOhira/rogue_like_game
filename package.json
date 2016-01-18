@@ -13,7 +13,7 @@
     "watch": "npm run watch:js & npm run watch:html & npm run watch:css",
     "watch:js": "webpack --watch",
     "watch:html": "jade src/main.jade -o build -P -w",
-    "watch:css": "node-sass -w src/styles/main.sass build/styles/main.css",
+    "watch:css": "watch-run -p 'src/styles/**/*.sass' npm run build:css",
     "clean": "rm -rf build"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "node-sass": "3.4.2",
     "sass-loader": "3.1.2",
     "style-loader": "0.13.0",
+    "watch-run": "1.2.4",
     "webpack": "1.12.9"
   },
   "dependencies": {
