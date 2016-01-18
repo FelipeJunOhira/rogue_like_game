@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var JadeLoader = require('app/lib/jade_loader');
+var JadeLoader = require('src/lib/jade_loader');
 
 describe('JadeLoader', function() {
   it('can be instantiated', function() {

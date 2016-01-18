@@ -1,13 +1,14 @@
 module.exports = {
-  entry: "./app/js/init.js",
+  entry: "./src/js/main.js",
   output: {
-    path: __dirname + "/app",
-    filename: "bundle.js"
+    path: __dirname + "/build/js",
+    filename: "main.js"
   },
   module: {
     loaders: [
       {
         test: /\.jade$/,
+        exclude: /\.\/src\/main\.jade$/,
         loader: "jade"
       },
       {

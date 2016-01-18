@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var ViewLoader = require('app/lib/view_loader');
+var ViewLoader = require('src/lib/view_loader');
 var jQuery = require('jquery');
 
 describe('ViewLoader', function() {
