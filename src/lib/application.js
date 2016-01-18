@@ -1,9 +1,12 @@
 var ControllerManager = require('./application/controller_manager');
+var KeyboardEventEmitter = require('./application/keyboard_event_emitter');
+var ControllerEventDispatcher = require('./application/controller_event_dispatcher');
 
 module.exports = (function() {
 
   function Application() {
     this._controllerManager = new ControllerManager();
+    this._keyboardEventEmitter = new KeyboardEventEmitter(this);
   };
 
   Application.prototype.loadController = function(controller) {
@@ -26,6 +29,17 @@ module.exports = (function() {
 
     var controller = this._controllerManager.getLastController();
     controller.load();
+  };
+
+  Application.prototype.onKeyBoardEvent = function(event) {
+    if (this._controllerManager.hasAnyController()) this._dispatchEvent(event);
+  };
+
+  Application.prototype._dispatchEvent = function(event) {
+    var controller = this._controllerManager.getLastController();
+    ControllerEventDispatcher
+      .withController(controller)
+      .dispatchEvent(event);
   };
 
   return Application;
