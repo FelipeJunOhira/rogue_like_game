@@ -2,6 +2,7 @@ var ViewLoader = require('../../lib/view_loader');
 var Screen = require('../../lib/screen');
 
 module.exports = (function() {
+  var EMPTY_FUNCTION = function() {};
 
   function BaseController() {};
 
@@ -43,6 +44,12 @@ module.exports = (function() {
     var application = this.getApplication();
     application.dismissController(this);
   };
+
+  BaseController.prototype.onKeyEnterPressed = EMPTY_FUNCTION;
+  BaseController.prototype.onKeyLeftPressed = EMPTY_FUNCTION;
+  BaseController.prototype.onKeyUpPressed = EMPTY_FUNCTION;
+  BaseController.prototype.onKeyRightPressed = EMPTY_FUNCTION;
+  BaseController.prototype.onKeyDownPressed = EMPTY_FUNCTION;
 
   return BaseController;
 })();
