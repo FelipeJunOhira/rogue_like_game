@@ -28,5 +28,9 @@ module.exports = (function() {
     return hasAnyController ? this._stack[this._stack.length - 1] : undefined;
   };
 
+  ControllerManager.prototype.hasAnyController = function() {
+    return this._stack.length > 0;
+  };
+
   return ControllerManager;
 })();
